@@ -37,9 +37,7 @@ SECRET_KEY = "django-insecure-5)+7ds-^f#@fw0=0yeu0x0h(=a%&8w(opt4npyh8)0md#77uk6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://internacharya.onrender.com',  # Render ka domain
-    '127.0.0.1',  # Localhost
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
