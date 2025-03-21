@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="pro.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: url("static/lbg1.jpg") no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 100px;
+            background: #212224;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+        }
+
+        .logo a {
+            color: #f8f9fa;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        nav a{
+    position: relative;
+    font-size: 1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scale(0);
+    transition: transform .3s;
+} 
+
+nav a:hover::after{
+    transform-origin: left;
+    transform: scale(1);
+    
+}
+
+nav  a:hover {
+    color: #ffdd57;
+}
+        .wrapper {
+            position: relative;
+            width: 400px;
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, .5);
+            border-radius: 20px;
+            backdrop-filter: blur(13px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 80px;
+            padding: 20px;
+        }
+
+        .form-box h2 {
+            font-size: 2em;
+            color: black;
+            text-align: center;
+        }
+
+        .input-box {
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .input-box label {
+            display: block;
+            font-size: 1em;
+            color: black;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .input-box input, .input-box select, .input-box textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            background: transparent;
+            font-size: 1em;
+            color: black;
+        }
+
+        .btn {
+            width: 100%;
+            height: 45px;
+            background: black;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            color: white;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #ffdd57;
+            color: black;
+        }
+
+        .messages {
+            margin-bottom: 15px;
+        }
+        .message {
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="home">InternAcharya</a></div>
+        <nav>
+            <a href="home">Home</a>
+            <a href="register">Register/Login</a>
+            <!-- <a href="list">Internships</a> -->
+            <a href="profile">Profile</a>
+            <!-- <a href="admin1">Admin</a> -->
+        </nav>
+    </header>
+    <div class="wrapper">
+        <div class="form-box">
+            <h2>Profile Information</h2>
+            <!-- Display Django Messages -->
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        <p class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+                            {{ message }}
+                        </p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <form action="{% url 'pro' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="input-box">
+                    <label>Full Name</label>
+                    <!-- <input type="text" id="fullName" required> -->
+                    <input type="text" name="full_name" value="{{ form.full_name.value }}" required>
+                </div>
+                <div class="input-box">
+                    <label>Contact Number</label>
+                    <input type="tel" name="contact_number" value="{{ form.contact_number.value }}" 
+                        required pattern="\d{10}" maxlength="10"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);" 
+                        title="Enter exactly 10 digits">
+                </div>
+                <div class="input-box">
+                    <label>Gender</label>
+                    <select name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male" {% if form.gender.value == "Male" %}selected{% endif %}>Male</option>
+                        <option value="Female" {% if form.gender.value == "Female" %}selected{% endif %}>Female</option>
+                        <option value="Other" {% if form.gender.value == "Other" %}selected{% endif %}>Other</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label>Age</label>
+                    <!-- <input type="number" id="age" required> -->
+                    <input type="number" name="age" value="{{ form.age.value }}" required>
+                </div>
+                <div class="input-box">
+                    <label>Date of Birth</label>
+                    <input type="date" name="date_of_birth" value="{{ form.date_of_birth.value|date:'Y-m-d' }}" required>
+                </div>
+                <div class="input-box">
+                    <label>Qualifications</label>
+                    <textarea name="qualifications" required>{{ form.qualifications.value }}</textarea>
+                </div>
+                <div class="input-box">
+                    <label>Skills</label>
+                    <select name="skills" required>
+                        <option value="">Select Skill</option>
+                        <option value="Java">Java</option>
+                        <option value="Python">Python</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="SQL">SQL</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label for="id_certificates">Upload Certificate (PDF/DOC/JPG/PNG/ZIP):</label>
+                    <input type="file" name="certificates" id="id_certificates">
+                </div>
+                <div class="input-box">
+                    <label>Area of Interest</label>
+                    <textarea name="area_of_interest" required>{{ form.area_of_interest.value }}</textarea>
+                </div>
+                <button type="submit" class="btn">Save Profile</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById("profileForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Profile saved successfully!");
+        });
+    </script>
+</body>
+</html>
