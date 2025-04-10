@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Form</title>
+    <link rel="stylesheet" href="static/aplit.css">
+    <style>
+        /* General Styling */
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    background: url("{% static 'lbg1.jpg' %}") no-repeat;   
+    background-size: cover;
+    background-position: center;
+}
+ 
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 100px;
+            background: #212224 ;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 99;
+
+}
+
+.logo a {
+    color: #f8f9fa;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a{
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scale(0);
+    transition: transform .3s;
+} 
+
+nav a:hover::after{
+    transform-origin: left;
+    transform: scale(1);
+    
+}
+
+nav  a:hover {
+    color: #ffdd57;
+}
+
+        /* Form Container */
+        .container {
+            width: 50%;
+            min-height: 600px;
+            background: rgba(255, 255, 255, 0.42);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            margin-top: 4%;
+        }
+
+        /* Form Steps */
+        .form-step {
+            display: none;
+            min-height: 400px;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        /* Buttons */
+        button {
+            background: #212224;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: #ffdd57;
+            color: black;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            position: relative;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            align-items: center;
+        }
+
+        /* Connecting Line */
+        .progress-line {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            width: 30%;
+            height: 5px;
+            background: rgb(210, 44, 44);
+            z-index: -1;
+            transition: width 0.4s ease-in-out;
+        }
+
+        /* Numbered Circles */
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            background: rgb(247, 241, 241);
+            color: black;
+            font-weight: bold;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: 0.5s;
+        }
+
+        /* Active Circle */
+        .progress-circle.active {
+            background: #73ff57;
+            color: black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .wrapper{
+    position: relative;
+    margin-left: 18%;
+    width: 450px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.wrapper .form-box{
+    width: 100%;
+    padding: 50px;
+}
+
+.form-box h2{
+    font-size: 2em;
+    color: black;
+    text-align: center;
+}
+
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid black;
+    margin: 30px 0;
+    
+    }
+
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: black;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label{
+    top: -5px;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: black;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: black;
+    line-height: 56px;   
+}
+
+.input-box1 {
+            position: relative;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .input-box1 label {
+            display: block;
+            font-size: 1em;
+            color: black;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .input-box1 input, .input-box1 select, .input-box1 textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            background: transparent;
+            font-size: 1em;
+            color: black;
+        }
+
+        .messages {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .alert {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="{% url 'home' %}">InternAcharya</a></div>
+        <nav>
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'register' %}">Register/Login</a>
+                <a href="{% url 'list' %}">Internships</a>
+                <a href="{% url 'profile' %}">Profile</a>
+                <!-- <a href="admin1">Admin</a> -->
+        </nav>
+    </header>
+
+<div class="container">
+    <h2>Internship Application</h2>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <div class="wrapper">
+    <div class="form-box login">
+    <form action="{% url 'apply_internship' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Step 1: Personal Details -->
+        <div class="form-step active">
+            <h3>Step 1: Personal Details</h3>
+            <div class="input-box">
+                <input type="text" name="full_name" class="step-input" required>
+                <label>Full Name:</label>
+            </div>
+            
+            <div class="input-box">
+                <input type="email" name="email" class="step-input" required>
+                <label>Email:</label>
+            </div>
+
+            <div class="input-box">
+            <input type="text" name="phone" pattern="\d{10}" maxlength="10" required 
+                title="Phone number must be exactly 10 digits.">
+            <label>Phone:</label>
+            </div>
+
+            <div class="input-box">
+            <input type="text" name="address" class="step-input" required>
+            <label>Address:</address></label>
+            </div>
+            <button type="button" class="next-btn" disabled>Next</button>
+        </div>
+
+        <!-- Step 2: Technical Details -->
+        <div class="form-step">
+            <h3>Step 2: Technical and profile details</h3>
+            <div class="input-box">
+            <input type="text" name="skills" class="step-input" required><br><br>
+            <label>Skills:</label>
+            </div>
+
+            <div class="input-box">
+            <input type="number" name="experience" class="step-input" required><br><br>
+            <label>Experience (Years):</label>
+            </div>
+
+            <div class="input-box">
+            <input type="text" name="preferred_technology" class="step-input" required><br><br>
+            <label>Preferred Technology:</label>
+            </div>
+
+            <div class="input-box">
+            <input type="text" name="position" class="step-input" required><br><br>
+            <label>Position in previous job:</label>
+            </div>
+
+            <button type="button" class="prev-btn">Back</button>
+            <button type="button" class="next-btn" disabled>Next</button>
+        </div>
+        <!-- step 3: upload profile Details -->
+        <div class="form-step">
+            <h3>Step 2:Profile Details</h3>
+            <div class="input-box">
+                <input type="text" name="company_name" class="step-input" required>
+                <label>Prefered Company name:</label>
+            </div>
+            
+            <div class="input-box">
+                <input type="url" name="linkedin" class="step-input"  placeholder="https://www.linkedin.com/in/yourprofile" >
+                <label>LinkedIn Profile:</label>
+            </div>
+            
+            <div class="input-box">
+                <input type="url" name="github" class="step-input" placeholder="https://github.com/yourusername">
+                <label>GitHub Profile (Optional):</label>
+            </div>
+            <button type="button" class="prev-btn">Back</button>
+            <button type="button" class="next-btn" disabled>Next</button>
+        </div>
+        <!-- Step 3: Upload Documents -->
+        <div class="form-step">
+            <h3>Step 3: Upload Documents</h3>
+            <input type="hidden" name="status" value="Pending"> 
+            <div class="input-box1">
+                <label>Internship role:</label>
+                <input type="text" name="internship_role" class="step-input" required>
+            </div>
+
+            <div class="input-box1">
+            <label>Upload Resume:</label>
+            <input type="file" name="resume" class="step-input" required><br><br>
+            
+            </div>
+
+            <div class="input-box1">
+            <label>Upload Certificates (if any):</label>
+            <input type="file" name="certificates"><br><br>
+            </div>
+
+            <button type="button" class="prev-btn">Back</button>
+            <button type="submit" disabled>Submit</button>
+        </div>
+        <!-- <div id="status-message" style="display: none; text-align: center; margin-top: 20px;">
+            <h3>Application Status: <span id="status-text">Pending</span></h3>
+        </div> -->
+    </form>
+    </div>
+    </div>
+    <!-- Progress Bar with Numbered Circles -->
+    <div class="progress-container">
+        <div class="progress-line"></div>
+        <div class="progress-circle active">1</div>
+        <div class="progress-circle">2</div>
+        <div class="progress-circle">3</div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const formSteps = document.querySelectorAll(".form-step");
+        const progressCircles = document.querySelectorAll(".progress-circle");
+        const progressLine = document.querySelector(".progress-line");
+        const nextButtons = document.querySelectorAll(".next-btn");
+        const prevButtons = document.querySelectorAll(".prev-btn");
+        const submitButton = document.querySelector("button[type='submit']");
+        let currentStep = 0;
+
+        function updateFormSteps() {
+            formSteps.forEach((step, index) => {
+                step.classList.toggle("active", index === currentStep);
+            });
+
+            progressCircles.forEach((circle, index) => {
+                circle.classList.toggle("active", index <= currentStep);
+            });
+
+            progressLine.style.width = `${(currentStep / (formSteps.length -1)) * 80}%`;
+
+        }
+
+        function validateStep(stepIndex) {
+            const inputs = formSteps[stepIndex].querySelectorAll(".step-input");
+            let allFilled = true;
+            inputs.forEach(input => {
+                if (!input.value) allFilled = false;
+            });
+
+            if (stepIndex === formSteps.length - 1) {
+                submitButton.disabled = !allFilled;
+            } else {
+                nextButtons[stepIndex].disabled = !allFilled;
+            }
+
+            if (allFilled) {
+                progressLine.style.width = `${(currentStep / (formSteps.length - 1)) * 80}px`;
+
+            }
+        }
+
+        document.querySelectorAll(".step-input").forEach(input => {
+            input.addEventListener("input", () => validateStep(currentStep));
+        });
+
+        nextButtons.forEach((button, index) => {
+            button.addEventListener("click", () => {
+                if (currentStep < formSteps.length - 1) {
+                    currentStep++;
+                    updateFormSteps();
+                }
+            });
+        });
+
+        prevButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    updateFormSteps();
+                }
+            });
+        });
+
+        document.getElementById("applicationForm").addEventListener("submit", function () {
+        alert("Your application has been submitted!");
+        });
+
+
+        updateFormSteps();
+    });
+</script>
+
+
+<script>
+    document.getElementById("applicationForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+        
+        // Simulate form submission
+        setTimeout(() => {
+            document.getElementById("status-message").style.display = "block";
+            document.getElementById("status-text").textContent = "Pending"; // Default status
+            alert("Application Submitted Successfully!");
+        }, 1000);
+    });
+</script>
+
+</body>
+</html>

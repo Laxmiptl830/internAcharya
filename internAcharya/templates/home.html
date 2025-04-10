@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Portal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="home1.css">
+
+<style>
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:  #212224;
+    color: white;
+    padding: 15px 20px;
+}
+
+.logo a {
+    color: #f8f9fa;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+nav ul li a:hover {
+    color: #ffdd57;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scale(0);
+    transition: transform .3s;
+} 
+
+nav ul li a:hover::after{
+    transform-origin: left;
+    transform: scale(1);
+    
+}
+
+    /* General Styles */
+/* ====== GENERAL STYLES ====== */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* ====== HERO SECTION ====== */
+/* INTRO SECTION */
+.intro {
+    width: 100%;
+    padding: 50px 0;
+    background-color: white;
+}
+
+.intro-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 90%;
+    margin: auto;
+}
+
+.intro-text {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+}
+
+.hd1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #0056b3;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.pg1 {
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+
+.pg3 {
+    font-size: 20px;
+    color: black;
+    line-height: 1.5;
+}
+
+/* IMAGES */
+.intro-images {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero {
+    width: 500px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.UpperOut {
+    display: flex;
+    width: 100%;
+    height: 50%;
+}
+
+.UpperIn {
+    width: 50%;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.UpperIn:hover {
+    transform: scale(1.02);
+}
+
+.lower {
+    width: 100%;
+    height: 55%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.lower:hover {
+    transform: scale(1.02);
+}
+
+/* Background Images */
+#in1 {
+    background: url("static/hero_background_2.jpg") no-repeat center;
+    background-size: cover;
+}
+
+#in2 {
+    background: url("static/hero background image 1.jpg") no-repeat center;
+    background-size: cover;
+}
+
+.lower {
+    background: url("static/lower.webp") no-repeat center;
+    background-size: cover;
+}
+
+/* ABOUT SECTION */
+.about {
+    width: 100%;
+    padding: 50px 0;
+    background-color: white;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    max-width: 90%;
+    margin: auto;
+}
+
+.about-image {
+    flex: 1;
+    height: 400px;
+    background: url("static/about-us.jpg") no-repeat center;
+    background-size: cover;
+    transition: transform 0.3s ease-in-out;
+    /* padding: 20px; */
+    margin-right: 20px;
+}
+
+.about-image:hover {
+    transform: scale(1.02);
+}
+
+.about-text {
+    flex: 1;
+    padding: 40px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.hd2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0056b3;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.pg2 {
+    font-size: 20px;
+    color: black;
+    line-height: 1.5;
+}
+/* ====== OUR SERVICES SECTION ====== */
+.services-container {
+    text-align: center;
+    padding: 80px 10%;
+    background: #c0b8b8;
+    background-image: url("static/bg3.jpg") no-repeat center; 
+}
+
+.services-container h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0056b3;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.service-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-card img {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.service-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.service-card p {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* ====== OUR PRIORITY LIST SECTION ====== */
+.container {
+    text-align: center;
+    padding: 80px 10%;
+    background: #ebe9e9;
+}
+
+.container h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0056b3;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Swiper Customization */
+.swiper {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.swiper-slide {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.swiper-slide:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.swiper-slide img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.review-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.review-text {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* ====== CTA SECTION ====== */
+.cta {
+    text-align: center;
+    padding: 60px 3%;
+    background: linear-gradient(135deg, #0073e6, #00c6fb);
+    color: white;
+}
+
+.cta h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.btn {
+    background: white;
+    color: #0073e6;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.3);
+    margin: 10px;
+}
+
+.btn:hover {
+    background: #f2f2f2;
+    box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.5);
+}
+
+/* ====== RESPONSIVE DESIGN ====== */
+@media (max-width: 992px) {
+    .intro {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .backcolor {
+        max-width: 100%;
+        padding-bottom: 30px;
+    }
+    
+    .hero {
+        width: 200px;
+        height: 200px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* testimonial css */
+.testimonial-section {
+    text-align: center;
+    padding: 50px 10%;
+    background: #f0eded;
+}
+
+.testimonial-section h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0056b3;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.review-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.review-text {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+.stars {
+    font-size: 1.2rem;
+    color: #ffdd57;
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+footer a {
+    color: #ffdd57;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+</style>
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="home">InternAcharya</a></div>
+        <nav>
+            <ul>
+                <li><a href="home">Home</a></li>
+                <li><a href="register">Register/Login</a></li>
+                <li><a href="list">Internships</a></li>
+                <li><a href="profile">Profile</a></li>
+                <li><a href="admin">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+    <!-- Intro Section -->
+        <div class="intro">
+        <div class="intro-content">
+            <div class="intro-text">
+                <h1 class="hd1"></h1>
+                <h1 class="hd1">Your Internship Journey Starts Here!</h1>
+                <p class="pg1">10000+ INTERNSHIPS</p>
+                <p class="pg3">
+                    Your gateway to valuable internship opportunities.<br>
+                Here, student and recent graduates can explore a <br>
+                wide range of internship opportunitiesin software <br>
+                development and techology tailored to fit their <br>
+                career aspiration.
+                </p>
+            </div>
+            <div class="intro-images">
+                <div class="hero">
+                    <div class="UpperOut">
+                        <div class="UpperIn" id="in1"></div>
+                        <div class="UpperIn" id="in2"></div>
+                    </div>
+                    <div class="lower"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="about">
+        <div class="about-content">
+            <div class="about-image"></div>
+            <div class="about-text">
+                <h1 class="hd2">About Us!</h1>
+                <p class="pg2">
+                    At the internship portal for young professional & freshers,<br> we focus on bridging the gap between
+            aspring tech talent and<br> companies in need of fresh perspectives.<br> Our platform is designed to
+            empower student and recent<br> graduate, making it easier to find internships that align with<br> their
+            skills and ambition. Join us in shaping the future of<br> technology through meaning work epreiences
+                </p>
+            </div>
+        </div>
+        </div>
+        <div class="services-container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="static/internship1.jpg" alt="Internship Search">
+                    <h3>Internship Search</h3>
+                    <p>Find the best internships across top companies in various fields.</p>
+                </div>
+                <div class="service-card">
+                    <img src="static/resume.png" alt="Resume Assistance">
+                    <h3>Resume Assistance</h3>
+                    <p>Get professional guidance to craft an impressive resume.</p>
+                </div>
+                <div class="service-card">
+                    <img src="static/workshop.png" alt="Webinars & Workshops">
+                    <h3>Webinars & Workshops</h3>
+                    <p>Attend exclusive sessions to enhance your career skills.</p>
+                </div>
+                <div class="service-card">
+                    <img src="static/interview.jpg" alt="Interview Preparation">
+                    <h3>Interview Preparation</h3>
+                    <p>Mock interviews and expert guidance to boost confidence.</p>
+                </div>
+                <div class="service-card">
+                    <img src="static/network.avif" alt="Networking Opportunities">
+                    <h3>Networking</h3>
+                    <p>Connect with industry professionals and mentors.</p>
+                </div>
+                <div class="service-card">
+                    <img src="static/appli.png" alt="Networking Opportunities">
+                    <h3>Application Tracking</h3>
+                    <p>Monitor the status of submitted applications and receive updates on selection progress.</p>
+                </div>
+                <div class="service-card">
+                    <img src="static/emp1.jpg" alt="Networking Opportunities">
+                    <h3>Skill Assessments & Tests</h3>
+                    <p> assessments to match with the best internship opportunities.</p>
+                </div>
+                <div class="service-card">
+                    <img src="static/certificate.avif" alt="Certification Courses">
+                    <h3>Certification Courses</h3>
+                    <p>Enroll in certified courses to enhance your skills.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h2 class="hd">Our Priority List</h2>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"> 
+                        <img src="static/google logo.png" alt="Google">
+                        <p class="review-name">Google</p>
+                        <p class="review-text">"Highly competitive internships in software engineering, UX design, and product management."</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="static/amazon logo.png" alt="Amazon">
+                        <p class="review-name">Amazon</p>
+                        <p class="review-text">"Internships in software development, operations, business, and marketing."</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="static/flipkart logo.jpg" alt="Flipkart">
+                        <p class="review-name">Flipkart</p>
+                        <p class="review-text">"Internships in product management, supply chain, and tech domains."</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="static/tcs logo.jpg" alt="TCS">
+                        <p class="review-name">TCS</p>
+                        <p class="review-text">"Structured internships in IT, research, and business areas."</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="static/wipro logo.png" alt="Wipro">
+                        <p class="review-name">Wipro</p>
+                        <p class="review-text">"IT, consulting, and business domain internships focusing on real-world projects."</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="static/netflix.png" alt="Netflix">
+                        <p class="review-name">Netflix</p>
+                        <p class="review-text">"Internships in engineering, data science, and content-related roles."</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="static/infosys.jpg" alt="Infosys">
+                        <p class="review-name">Infosys</p>
+                        <p class="review-text">"Internships in software development, AI, and consulting."</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="static/lt logo.jpg" alt="LTIMindtree">
+                        <p class="review-name">LTIMindtree</p>
+                        <p class="review-text">"IT and consulting internships focusing on digital transformation."</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="static/apple logo.png" alt="Apple">
+                        <p class="review-name">Apple</p>
+                        <p class="review-text">"Internships in hardware, software, and design."</p>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+        <!-- testimonial area  -->
+        <div class="testimonial-section">
+            <h2>What Our Interns Say</h2>
+            <div class="swiper testimonial-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Testimonial 1 -->
+                    <div class="swiper-slide testimonial-card">
+                        <img src="static/pfl1.avif" alt="User1">
+                        <p class="review-name">John Doe</p>
+                        <p class="review-text">"The best internship platform! Got placed in Google. Thanks, internAcharya!"</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="swiper-slide testimonial-card">
+                        <img src="static/pfl2.png" alt="User2">
+                        <p class="review-name">Emily Smith</p>
+                        <p class="review-text">"internAcharya made my dream of working at Amazon a reality!"</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="swiper-slide testimonial-card">
+                        <img src="static/pfl3.png" alt="User3">
+                        <p class="review-name">Michael Lee</p>
+                        <p class="review-text">"A great platform for freshers looking for industry exposure!"</p>
+                        <div class="stars">★★★★☆</div>
+                    </div>
+                    <!-- Testimonial 4 -->
+                    <div class="swiper-slide testimonial-card">
+                        <img src="static/pfl4.jpg" alt="User4">
+                        <p class="review-name">Sophia Brown</p>
+                        <p class="review-text">"The application process was seamless, and I got my dream internship!"</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <!-- Testimonial 5 -->
+                    <div class="swiper-slide testimonial-card">
+                        <img src="static/pfl1.avif" alt="User4">
+                        <p class="review-name">Ram sharma</p>
+                        <p class="review-text">"The application process was seamless, and I got my dream internship!"</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                    <!-- Testimonial 6 -->
+                    <div class="swiper-slide testimonial-card">
+                        <img src="static/pfl3.png" alt="User4">
+                        <p class="review-name">Gita tiwari</p>
+                        <p class="review-text">"The application process was seamless, and I got my dream internship!"</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+
+                    <!-- Testimonial 7 -->
+                    <div class="swiper-slide testimonial-card">
+                        <img src="static/pfl2.png" alt="User4">
+                        <p class="review-name">Vijay kumar</p>
+                        <p class="review-text">"The application process was seamless, and I got my dream internship!"</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+
+                    <!-- Testimonial 8 -->
+                    <div class="swiper-slide testimonial-card">
+                        <img src="static/pfl4.jpg" alt="User4">
+                        <p class="review-name">Sameer Singh</p>
+                        <p class="review-text">"The application process was seamless, and I got my dream internship!"</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="cta">
+            <h2>Get Started Now!</h2>
+            <a href="register" class="btn">Register/Login</a>
+            <a href="list" class="btn">Internships</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Internship Portal. All rights reserved.</p>
+        <p><a href="#">About Us</a> | <a href="#">FAQ</a> | <a href="#">Terms & Conditions</a> | <a href="#">Privacy Policy</a></p>
+        <p>Contact: info@internshipportal.com</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>  
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let cards = document.querySelectorAll('.card');
+        let options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+    
+        let observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+    
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+    
+        // Typing Animation
+        const text = "Welcome to InternAcharya"; 
+        const heading = document.querySelector(".hd1");
+        let index = 0;
+    
+        function typeWriter() {
+            if (index < text.length) {
+                heading.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+    
+        typeWriter();
+    
+        // Swiper Initialization
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 20,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    });
+    
+  </script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        loop: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        breakpoints: {
+            992: { slidesPerView: 3 },
+            768: { slidesPerView: 2 },
+            576: { slidesPerView: 1 }
+        }
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".testimonial-swiper", {
+    slidesPerView: 3,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: {
+      delay: 1000,  // Auto-slide every 2.5 seconds
+      disableOnInteraction: false, 
+    },
+    breakpoints: {
+        1024: { slidesPerView: 3 },
+        768: { slidesPerView: 2 },
+        480: { slidesPerView: 1 },
+    }
+  });
+</script>
+
+</body>
+</html>
